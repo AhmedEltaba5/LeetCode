@@ -11,8 +11,7 @@ class Solution(object):
         :rtype: ListNode
         """
         
-        #resultlist = curr = ListNode(0)
-        curr = resultlist = ListNode(0)
+        resultlist = curr = ListNode(0)
         carry = 0
         
         while l1 or l2 or carry:

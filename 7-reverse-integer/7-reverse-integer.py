@@ -7,7 +7,7 @@ class Solution(object):
         
         # we will use mod and integer division
         
-        if x> 2**31-1 or x < (-2)**31:
+        if x>= 2**31-1 or x <= (-2)**31:
             return 0
         
         # handle negative
@@ -22,7 +22,7 @@ class Solution(object):
             x = x // 10
             
         result = negative * result
-        if result > 2**31-1 or result < (-2)**31:
+        if result >= 2**31-1 or result <= (-2)**31:
             return 0
         return result
         

@@ -16,10 +16,9 @@ class Solution(object):
             if s[i] in visited_dict and visited_dict[s[i]] >= start:
                 # common substring finished
                 start = visited_dict[s[i]]+1
-                visited_dict[s[i]] = i
             else:
-                visited_dict[s[i]] = i
                 res = max(res, i-start+1)
+            visited_dict[s[i]] = i
                 
         return res
                 

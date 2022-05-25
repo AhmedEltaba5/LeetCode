@@ -5,15 +5,14 @@ class Solution(object):
         :type target: int
         :rtype: List[int]
         """
-        if len(nums) <= 0:
-            return False
-        
+        res = []
         subtract_dict = {}
         for i in range(len(nums)):
             if nums[i] in subtract_dict:
-                return subtract_dict[nums[i]], i
+                res = [subtract_dict[nums[i]], i]
+                return res
             else:
                 subtract_dict[target-nums[i]] = i
-                
+            
             
         

@@ -4,45 +4,36 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
+        min_int_32 = 2 ** 31
         
         s = s.strip()
         
         if len(s) == 0:
             return 0
-
-        result = 0
-        sign_multiplier = 1
-        start = 0
-        min_int_32 = 2 ** 31
         
-        if s[0] == "-":
-            sign_multiplier = -1
-            start = 1
-            
+        sign = 1
         if s[0] == "+":
-            sign_multiplier = 1
-            start = 1
-            
-        for i in range(start, len(s)):
-            if not s[i].isnumeric():
-                if result * sign_multiplier <= -min_int_32:
-                    return -min_int_32
-                elif result * sign_multiplier >= min_int_32-1:
-                    return min_int_32-1
-                else:
-                    return result * sign_multiplier
+            sign = 1
+            s = s[1:]
+        elif s[0] == "-":
+            sign = -1
+            s = s[1:]
+        
+        res = 0
+        for i in s:
+            if i.isnumeric():
+                res = res*10 + (ord(i)-ord("0"))
+            else:
+                break
                 
-            current_int = ord(s[i]) - ord("0") # Ascii values
-            result = result * 10 + current_int
-        
-        if result * sign_multiplier <= -min_int_32:
+        res = sign*res
+        if res <= -min_int_32:
             return -min_int_32
-        elif result * sign_multiplier >= min_int_32-1:
+        elif res >= min_int_32-1:
             return min_int_32-1
-        else:
-            return result * sign_multiplier
         
-        
+        return res
+                
                 
             
         

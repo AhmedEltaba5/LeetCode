@@ -5,24 +5,25 @@ class Solution(object):
         :rtype: int
         """
         
-        # using sliding window technique
+        if len(s) == 1:
+            return 1
         
-        length = len(s)
-        max_length = start = 0
+        res = 0
+        visited_dict = dict()
+        start = 0
         
-        if length == 0:
-            return 0
-        
-        map_chars = {}
-        for i in range(length):
-            if s[i] in map_chars and map_chars[s[i]] >= start:
-                # repeated character
-                start = map_chars[s[i]] + 1
+        for i in range(len(s)):
+            if s[i] in visited_dict and visited_dict[s[i]] >= start:
+                # common substring finished
+                res = max(res, i-start)
+                start = visited_dict[s[i]]+1
+                visited_dict[s[i]] = i
             else:
-                max_length = max(max_length, i - start + 1)
-            map_chars[s[i]] = i
+                visited_dict[s[i]] = i
+                res = max(res, i-start+1)
                 
-        return max_length
-            
-    
+        return res
+                
+                
+        
         

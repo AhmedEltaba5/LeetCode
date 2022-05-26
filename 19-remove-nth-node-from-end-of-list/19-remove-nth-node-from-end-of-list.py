@@ -10,11 +10,7 @@ class Solution(object):
         :type n: int
         :rtype: ListNode
         """
-        
-        # we will use two pointers
-        fast = head
-        slow = head
-        
+        slow = fast = head
         for i in range(n):
             fast = fast.next
         
@@ -22,9 +18,10 @@ class Solution(object):
             # reached end after n steps
             return head.next
         
-        while fast.next is not None:
-            fast = fast.next
+        while fast.next:
             slow = slow.next
+            fast = fast.next
+            
         slow.next = slow.next.next
-        return head
         
+        return head

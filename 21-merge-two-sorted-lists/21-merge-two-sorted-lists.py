@@ -11,24 +11,18 @@ class Solution(object):
         :rtype: Optional[ListNode]
         """
         
-        res = dummy = ListNode()
-        
-        while list1 and list2:
-            if list1.val>list2.val:
-                dummy.next = ListNode(list2.val)
-                dummy = dummy.next
-                list2 = list2.next
+        cur = dummy = ListNode()
+        while list1 and list2:               
+            if list1.val < list2.val:
+                cur.next = list1
+                list1, cur = list1.next, list1
             else:
-                dummy.next = ListNode(list1.val)
-                dummy = dummy.next
-                list1 = list1.next
-        while list1:
-            dummy.next = ListNode(list1.val)
-            dummy = dummy.next
-            list1 = list1.next
-        while list2:
-            dummy.next = ListNode(list2.val)
-            dummy = dummy.next
-            list2 = list2.next
-        return res.next
+                cur.next = list2
+                list2, cur = list2.next, list2
+                
+        if list1 or list2:
+            cur.next = list1 if list1 else list2
+            
+        return dummy.next
+                
         

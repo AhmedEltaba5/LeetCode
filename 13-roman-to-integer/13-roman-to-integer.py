@@ -5,27 +5,24 @@ class Solution(object):
         :rtype: int
         """
         
-        nums_dict = {'I':1,
-                    'V':5,
-                    'X':10,
-                    'L':50,
-                    'C':100,
-                    'D':500,
-                    'M':1000}
+        map_dict = dict()
+        map_dict['I'] = 1
+        map_dict['V'] = 5
+        map_dict['X'] = 10
+        map_dict['L'] = 50
+        map_dict['C'] = 100
+        map_dict['D'] = 500
+        map_dict['M'] = 1000
         
-        total = 0
         prev = 0
-        current = 0
-        
+        res = 0
         for i in s:
-            current = nums_dict[i]
-            if prev < current:
-                total = total + current -2*prev
-                prev = current
+            if prev < map_dict[i]:
+                res = res + map_dict[i] - 2 * prev
             else:
-                total = total + current
-                prev = current
-        
-        return total
+                res = res + map_dict[i]
+            prev = map_dict[i]
+            
+        return res
             
         

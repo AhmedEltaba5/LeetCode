@@ -5,20 +5,16 @@ class Solution(object):
         :rtype: str
         """
         
-        com_prefix = ""
-        
-        min_elm = min(strs)
-        
-        if min_elm == "":
-            return com_prefix
-        
-        for i in range(len(min_elm)):
-            char = min_elm[i]
-            for item in strs:
-                if item[i] != char:
-                    return com_prefix
-            com_prefix += char
-        return com_prefix
-                
-            
+        res = ""
+        min_str = min(strs, key=len)
+        for i in range(len(min_str)):
+            tmp = 1
+            for j in strs:
+                if j[i] != min_str[i]:
+                    tmp = 0
+            if tmp:
+                res = res + min_str[i]
+            else:
+                break
+        return res
         

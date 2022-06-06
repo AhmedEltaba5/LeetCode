@@ -7,13 +7,13 @@ class Solution(object):
         :rtype: int
         """
         
-        local_max=0
-        global_max=-np.inf
+        res_sum = -99999
+        curr_sum = 0
+        
         for i in range(len(nums)):
-            local_max=max(nums[i],nums[i]+local_max)   #using kadanes algo
-            if local_max>global_max:
-                global_max=local_max
+            curr_sum = max(nums[i], curr_sum+nums[i])
+            res_sum=  max(res_sum, curr_sum)
                 
-        return global_max
+        return res_sum
         
         

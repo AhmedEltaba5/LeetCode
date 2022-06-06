@@ -7,7 +7,7 @@ class Solution(object):
         :rtype: int
         """
         
-        res_sum = -99999
+        res_sum = float('-inf')
         curr_sum = 0
         
         for i in range(len(nums)):

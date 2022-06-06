@@ -12,7 +12,7 @@ class Solution(object):
         
         for i in range(len(nums)):
             curr_sum = max(nums[i], curr_sum+nums[i])
-            res_sum=  max(res_sum, curr_sum)
+            res_sum = max(res_sum, curr_sum)
                 
         return res_sum
         

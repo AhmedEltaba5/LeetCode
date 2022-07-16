@@ -5,11 +5,12 @@ class Solution(object):
         :rtype: bool
         """
         
-        dict={}
+        dict_lst=[]
         k=0
         for item in nums:
-            if item not in dict:
-                dict[item]=k
+            if item not in dict_lst:
+                dict_lst.append(item)
+                #dict[item]=k
                 k += 1
             else:
                 return True

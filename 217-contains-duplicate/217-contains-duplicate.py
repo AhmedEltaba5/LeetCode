@@ -5,5 +5,10 @@ class Solution(object):
         :rtype: bool
         """
         
-        return len(set(nums)) != len(nums)
+        unique_nums = set(nums)
+        
+        if len(unique_nums) == len(nums):
+            # no duplicates
+            return False
+        return True
         

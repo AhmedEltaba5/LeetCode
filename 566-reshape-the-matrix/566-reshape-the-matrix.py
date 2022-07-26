@@ -12,14 +12,7 @@ class Solution(object):
         if r*c != len(mat_exploded):
             return mat
         
-        out = []
-        k = 0
-        for i in range(r):
-            tmp = []
-            for j in range(len(mat_exploded)/r):
-                tmp.append(mat_exploded[k])
-                k+=1
-            out.append(tmp)
-        return out
+        res = [mat_exploded[i:i+c] for i in range(0, len(mat_exploded), c)]
+        return res
                 
         

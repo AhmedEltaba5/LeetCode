@@ -5,6 +5,13 @@ class Solution(object):
         :rtype: List[List[str]]
         """
         
+        hashmap = defaultdict(list)
+        for s in strs:
+            # keys can be strings, bcz they are immutable.
+            hashmap[str(sorted(s))].append(s)
+        return hashmap.values()
+    
+        """
         anagram_dict = {}
         
         for item in strs:
@@ -15,6 +22,7 @@ class Solution(object):
                 anagram_dict[item_sorted] = [item]
                 
         return anagram_dict.values()
+        """
                 
                 
         

@@ -6,11 +6,22 @@ class Solution(object):
         :rtype: List[int]
         """
         
+        # index is count and value is list of nums with this count
+        freq_list = [[] for i in range(len(nums) + 1)] 
+        
         count_dict = dict()
         for elm in nums:
-            if elm in count_dict:
-                count_dict[elm] += 1
-            else:
-                count_dict[elm] = 1
+            count_dict[elm] = count_dict.get(elm,0) + 1
+        
+        for num, count in count_dict.items():
+            freq_list[count].append(num)
             
-        return [i[0] for i in sorted(count_dict.items(), key=lambda x: x[1], reverse=True)][:k]
+        top_k = []
+        
+        for i in freq_list[::-1]:
+            if i:
+                for elm in i:
+                    top_k.append(elm)
+                    if len(top_k) == k:
+                        return top_k
+            

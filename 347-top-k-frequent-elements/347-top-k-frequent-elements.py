@@ -5,6 +5,7 @@ class Solution(object):
         :type k: int
         :rtype: List[int]
         """
+        # bucket sort O(n)
         
         # index is count and value is list of nums with this count
         freq_list = [[] for i in range(len(nums) + 1)] 

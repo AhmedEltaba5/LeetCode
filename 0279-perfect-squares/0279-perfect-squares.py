@@ -4,22 +4,21 @@ class Solution(object):
         :type n: int
         :rtype: int
         """
-        
-        i,k,squares = 1,1,[]
-        while (k<=n):
-          squares.append(k)
+        dp = [n] * (n+1) # store n squares for each elem
+        dp[0] = 0 # base case
+
+        # calc squares
+        i,s,squares = 1,1,[]
+        while (s<=n):
+          squares.append(s)
           i += 1
-          k = i**2
+          s = i**2
 
-        dp = [float('inf') for _ in range(n+1)]
+        for target in range(1,n+1):
+            for square in squares:
+                if target-square < 0:
+                    break
+                dp[target] = min(dp[target], 1+dp[target-square])
 
-        for s in squares:
-          for i in range(1,n+1):
-            if s <= i:
-              if i % s == 0:
-                can = i // s
-                dp[i] = min(can, dp[i])
-              else:
-                dp[i] = min(1+dp[i-s], dp[i])
         return dp[n]
         
